@@ -1,0 +1,10 @@
+version: '3'
+services:
+  test-from-github:
+    build: https://github.com/SimoSca/godocker-server-info.git
+    image: simosca/godocker-server-info
+  
+  test-local:
+    build: 
+      context: .
+    image: simosca/godocker-server-info
