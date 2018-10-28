@@ -18,6 +18,12 @@ clean:
 	find ./go -type f ! -path './go/src/github.com/SimoSca/*' -exec rm {} \;
 	find ./go -type d -empty -exec rmdir {} \;
 
+run-main:
+	@go run ./go/src/github.com/SimoSca/godocker-server-info/
+
+run-docker:
+	@go run ./go/src/github.com/SimoSca/godocker-server-info/main.go docker
+
 start:
 	docker-compose build test-local
 	docker-compose up -d test-local
@@ -31,7 +37,13 @@ docker-debug-origin:
 		-v "/Users/simonescardoni/MyOther/Antirust/Go/godocker-server-info/go/src/github.com/SimoSca/godocker-server-info:/go/src/github.com/SimoSca/godocker-server-info" \
 		golang \
 		sh
-		
+
+
+get-docker:
+	@go get ./go/src/github.com/SimoSca/godocker-server-info/godock
+
+test-docker:
+	@go test -v ./go/src/github.com/SimoSca/godocker-server-info/godock
 
 # .PNONY: all combined release fmt release-deps pull tag
 .PHONY: build clean start start-github

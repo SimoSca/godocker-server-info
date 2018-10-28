@@ -9,8 +9,11 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
+
 	"github.com/gobuffalo/packr"
 	"github.com/SimoSca/godocker-server-info/enlogger"
+	"github.com/SimoSca/godocker-server-info/godock"
 )
 
 /// PAGE
@@ -67,9 +70,14 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	port := ":8080"
+	if os.Args[1] == "docker" {
+		godock.PrintList()
+		godock.PrintEvents()
+	}else{
+		port := ":8080"
 
-	fmt.Println("Server starts listening on port ", port)
-    http.HandleFunc("/", handler)
-	log.Fatal(http.ListenAndServe(port, nil))
+		fmt.Println("Server starts listening on port ", port)
+    	http.HandleFunc("/", handler)
+		log.Fatal(http.ListenAndServe(port, nil))
+	}
 }
