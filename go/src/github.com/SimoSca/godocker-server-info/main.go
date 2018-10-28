@@ -70,7 +70,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	if os.Args[1] == "docker" {
+	
+	if len(os.Args) > 1 && os.Args[1] == "docker" {
 		godock.PrintList()
 		godock.PrintEvents()
 	}else{
