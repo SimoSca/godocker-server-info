@@ -3,8 +3,12 @@ services:
   test-from-github:
     build: https://github.com/SimoSca/godocker-server-info.git
     image: simosca/godocker-server-info
-  
+    ports:
+      - 8080:8080
+
   test-local:
     build: 
       context: .
     image: simosca/godocker-server-info
+    ports:
+      - 8080:8080

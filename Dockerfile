@@ -4,6 +4,9 @@ FROM golang as build
 
 COPY ./go/src/github.com/SimoSca/godocker-server-info /go/src/github.com/SimoSca/godocker-server-info
 WORKDIR /go/src/github.com/SimoSca/godocker-server-info
+RUN go get .
+# extra work to enable assets bundling into executable via packr utility
+RUN cd /go/src/github.com/gobuffalo/packr/packr && go get . && go build && cd - && packr
 
 # Install MailHog as statically compiled binary:
 # ldflags explanation (see `go tool link`):
@@ -29,3 +32,5 @@ COPY --from=build /go/bin/godocker-server-info /bin/
 USER 1000
 # ENTRYPOINT ["godocker-server-info"]
 CMD ["godocker-server-info"]
+
+EXPOSE 8080
