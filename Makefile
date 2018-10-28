@@ -7,7 +7,9 @@ export GOPATH=$(shell pwd)/go
 
 # se voglio costruire un singolo pacchetto
 
-
+get:
+	@go get ./go/src/github.com/SimoSca/godocker-server-info/
+	
 build:
 	@go install ./go/src/github.com/SimoSca/godocker-server-info/
 	@./go/bin/godocker-server-info

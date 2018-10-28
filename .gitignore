@@ -6,3 +6,4 @@ go/src/*
 go/src/github.com/*
 !go/src/github.com/SimoSca/
 
+MailHog/
