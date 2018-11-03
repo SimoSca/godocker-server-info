@@ -18,8 +18,8 @@ clean:
 	find ./go -type f ! -path './go/src/github.com/SimoSca/*' -exec rm {} \;
 	find ./go -type d -empty -exec rmdir {} \;
 
-run-main:
-	@go run ./go/src/github.com/SimoSca/godocker-server-info/
+run-server:
+	@go run ./go/src/github.com/SimoSca/godocker-server-info/main.go
 
 run-docker:
 	@go run ./go/src/github.com/SimoSca/godocker-server-info/main.go docker
