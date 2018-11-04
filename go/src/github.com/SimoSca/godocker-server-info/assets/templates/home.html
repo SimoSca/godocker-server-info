@@ -1,5 +1,32 @@
 <head>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script>
+            $(function() {
+                    // var ws = new WebSocket("ws://localhost:8082/"); // use port 8082 instead of 8080
+                    console.log(window.location)
+                    var ws = new WebSocket('ws://' + window.location.hostname + ':8082/');
+                    ws.onopen = function() {
+                        console.log("connected to ws");
+                    }
+                    ws.onclose = function(e) {
+                        console.log("connection closed (" + e.code + ")");
+                    }
+                    ws.onmessage = function(e) {
+                        console.log("message received: " + e.data);
+                    }
+                    var $ul = $('#msg-list');
+
+                   $('#sendBtn').click(function(){
+                      ws.send(JSON.stringify({
+                          "author": "Enomis", 
+                          "body": "nice to meet u"}
+                        ));
+                      console.log("Sending data to HTTP server via Websocket via port 8082 :");
+                    });
+            });
+        </script>
 </head>
 <div class="container">
 
@@ -10,6 +37,10 @@
       
     {{printf "%s" .Page.Body}}
 
+<!-- try to trigger ws -->
+<div>
+    <button id="sendBtn" type="button" class="btn btn-primary">Send to webSocket</button>
+</div>
 
 {{ $length := len .Hosts }} {{ if gt $length 0 }}
 <table class="table table-striped table-bordered mt-3">

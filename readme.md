@@ -11,6 +11,15 @@ Start Tutorial
 
 - [https://golang.org/doc/articles/wiki/](https://golang.org/doc/articles/wiki/)
 
+**WebSocket**
+
+- [Http & Ws on same golang but different port](https://www.socketloop.com/tutorials/golang-serving-http-and-websocket-from-different-ports-in-a-program-example)
+
+- [Http & Ws on same golang with gorilla websocket](https://www.socketloop.com/tutorials/golang-web-javascript-to-server-side-websocket-example)
+
+- [Full tutorial with Broadcast message!](https://scotch.io/bar-talk/build-a-realtime-chat-server-with-go-and-websockets), very important
+
+- [very good for broadcst message and code struct!](https://mycodesmells.com/post/creating-websockets-server-in-go)
 
 NOTE
 ----
